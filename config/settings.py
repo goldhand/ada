@@ -32,6 +32,7 @@ PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
 PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
 GRAPPELLI_INSTALLED = True
 TESTING = False
+ALLOWED_HOSTS = ["*"]
 ########## END 3RD PARTY FORKS
 
 class Common(Configuration):
@@ -74,7 +75,9 @@ class Common(Configuration):
 
     OPTIONAL_APPS = (
         #"compressor",
+        "django_extensions",
         PACKAGE_NAME_FILEBROWSER,
+        PACKAGE_NAME_GRAPPELLI,
     )
 
     # Apps specific for this project go here.
