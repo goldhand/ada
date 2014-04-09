@@ -1,1 +1,1 @@
-BUILDPACK_URL: https://github.com/heroku/heroku-buildpack-python
+heroku config:set BUILDPACK_URL=git://github.com/heroku/heroku-buildpack-python.git
