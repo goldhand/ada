@@ -168,7 +168,7 @@ class Common(Configuration):
         }
     }
 
-    CACHE_MIDDLEWARE_KEY_PREFIX = 'danmar'
+    CACHE_MIDDLEWARE_KEY_PREFIX = 'ada'
 
 
     ########## END CACHING
@@ -287,7 +287,7 @@ class Common(Configuration):
     ########## Custom user app defaults
     # Select the correct user model
     #AUTH_USER_MODEL = "users.User"
-    LOGIN_REDIRECT_URL = "users:redirect"
+    #LOGIN_REDIRECT_URL = "users:redirect"
     ########## END Custom user app defaults
 
     ########## SLUGLIFIER
