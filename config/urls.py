@@ -17,7 +17,6 @@ urlpatterns = patterns('',
     url("^$", direct_to_template, {"template": "index.html"}, name="home"),
     # url("^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
     # Uncomment the next line to enable the admin:
-    (r'^grappelli/', include('grappelli.urls')), # grappelli URLS
     url(r'^admin/', include(admin.site.urls)),
 
     # User management
@@ -31,7 +30,7 @@ urlpatterns = patterns('',
 
     ("^", include("mezzanine.urls")),
 
-) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+)
 
 handler404 = "mezzanine.core.views.page_not_found"
 handler500 = "mezzanine.core.views.server_error"
