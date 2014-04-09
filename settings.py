@@ -295,6 +295,8 @@ OPTIONAL_APPS = (
 
 DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 
+
+AUTOSLUG_SLUGIFY_FUNCTION = "slugify.slugify"
 ###################
 # DEPLOY SETTINGS #
 ###################
@@ -328,12 +330,16 @@ DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 # Allow any settings to be defined in local_settings.py which should be
 # ignored in your version control system allowing for settings to be
 # defined per machine.
-try:
-    from local_settings import *
-except ImportError:
-    pass
-
-
+if os.environ.get("DJANGO_CONFIGURATION", "Local") == "Local":
+    try:
+        from local_settings import *
+    except ImportError:
+        pass
+else:
+    try:
+        from production_settings import *
+    except ImportError:
+        pass
 ####################
 # DYNAMIC SETTINGS #
 ####################

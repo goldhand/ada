@@ -24,8 +24,8 @@ except ImportError:
 from configurations import Configuration, values
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-#PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-#PROJECT_DIRNAME = PROJECT_ROOT.split(os.sep)[-1]
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIRNAME = PROJECT_ROOT.split(os.sep)[-1]
 
 ########## 3RD PARTY FORKS
 PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
@@ -33,6 +33,7 @@ PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
 GRAPPELLI_INSTALLED = True
 TESTING = False
 ALLOWED_HOSTS = ["*"]
+FILE_UPLOAD_PERMISSIONS = 0o644
 ########## END 3RD PARTY FORKS
 
 class Common(Configuration):
@@ -328,6 +329,8 @@ class Common(Configuration):
 
 
     ########## Your common stuff: Below this line define 3rd party libary settings
+    TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
+
 
 
 class Local(Common):
