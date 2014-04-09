@@ -24,7 +24,7 @@ for i, arg in enumerate(sys.argv):
 # Run Django.
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
-    os.environ.setdefault("DJANGO_CONFIGURATION", "Production")
+    os.environ.setdefault("DJANGO_CONFIGURATION", "Local")
 
     from configurations.management import execute_from_command_line
 

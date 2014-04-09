@@ -1,11 +1,7 @@
 import os
 from configurations import Configuration, values
-import dj_database_url
-
 from settings import *
 
-
-DATABASES['default'] =  dj_database_url.config()
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'safd')
 NEVERCACHE_KEY = "f60ab341-980b-43f5-94e6-134f610bce50b117c5b5-4a00-420e-b1d3-41b5a88ee3320ecf6530-5682-4e73-a70e-06926bcb4013"
 ########## END SECRET KEY
