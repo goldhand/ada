@@ -19,5 +19,9 @@
 {% editable page.title %}{{ page.title }}{% endeditable %}
 {% endblock %}
 
-{% block main %}
+{% block page %}
+<div class="container">
+	{% block main %}
+	{% endblock main %}
+</div>
 {% endblock %}

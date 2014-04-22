@@ -9,20 +9,247 @@
 {% endblock %}
 
 {% block main %}
-{% blocktrans %}
-<h2>Congratulations!</h2>
-<p>
-    Welcome to your new Mezzanine powered website.
-    Here are some quick links to get you started:
-</p>
-<ul>
-    <li><a href="/admin/">Log in to the admin interface</a></li>
-    <li><a href="http://mezzanine.jupo.org/docs/content-architecture.html">Creating custom page types</a></li>
-    <li><a href="http://mezzanine.jupo.org/docs/frequently-asked-questions.html#templates">Modifying HTML templates</a></li>
-    <li><a href="http://mezzanine.jupo.org/docs/frequently-asked-questions.html#why-isn-t-the-homepage-a-page-object-i-can-edit-via-the-admin">Changing this homepage</a></li>
-    <li><a href="http://mezzanine.jupo.org/docs/frequently-asked-questions.html">Other frequently asked questions</a></li>
-    <li><a href="http://mezzanine.jupo.org/docs/configuration.html#default-settings">Full list of settings</a></li>
-    <li><a href="http://mezzanine.jupo.org/docs/deployment.html">Deploying to a production server</a></li>
-</ul>
-{% endblocktrans %}
+
+<!-- .header-bottom-wrapper -->
+<div class="header-bottom-wrapper">
+    <div class="container">
+
+        <!-- .quote -->
+        <div class="quote">
+            <blockquote>
+                <p>If our country is worth dying for in time of war let us resolve that it is truly worth living for in time of peace.</p>
+                <span class="author"><span class="line left"></span>HAMILTON FISH<span class="line right"></span></span>
+            </blockquote>
+        </div>
+        <!-- End of .quote -->
+
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 home-flexslider variation-1">
+                <!-- Slider -->
+				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				  <!-- Indicators -->
+				  <ol class="carousel-indicators">
+				    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				  </ol>				
+
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner">
+				    <div class="item active">
+				      <img src="" alt="">
+				      <div class="carousel-caption">
+				      </div>
+				    </div>
+				    <div class="item">
+				      <img src="" alt="">
+				      <div class="carousel-caption">
+				      </div>
+				    </div>
+
+				  </div>				
+
+				  <!-- Controls -->
+				  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left"></span>
+				  </a>
+				  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right"></span>
+				  </a>
+                </div><!-- End Slider -->
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 header-widget">
+
+                <!-- wp-email-capture-widget -->
+                <div class="wp-email-capture-widget">
+                    <div class="slide_widget_inner">
+                        <h3 class="title">Join Our Efforts Towards a Better Future</h3>
+                        <div class="textwidget">
+                            Become a member by subscribing the form displayed below.
+                        </div>
+                        <div class="wp-email-capture wp-email-capture-widget wp-email-capture-widget-worldwide" id="wp_email_capture">
+                            <form action="#" method="post" name="wp_email_capture">
+
+
+                                <label for="wp-email-capture-name-widget" class="wp-email-capture-name wp-email-capture-label wp-email-capture-widget-worldwide wp-email-capture-name-widget wp-email-capture-name-label wp-email-capture-name-label-widget" style="display: none;">Name:</label> <input type="text" title="Name" class="wp-email-capture-name wp-email-capture-input wp-email-capture-widget-worldwide wp-email-capture-name-widget wp-email-capture-name-input wp-email-capture-name-input-widget required" id="wp-email-capture-name-widget" name="wp-email-capture-name" placeholder="Your Name"><br>
+
+                                <label for="wp-email-capture-email-widget" class="wp-email-capture-email wp-email-capture-label wp-email-capture-widget-worldwide wp-email-capture-email-widget wp-email-capture-email-label wp-email-capture-email-label-widget" style="display: none;">Email:</label> <input type="text" title="Email" class="wp-email-capture-email wp-email-capture-input wp-email-capture-widget-worldwide wp-email-capture-email-widget wp-email-capture-email-input wp-email-capture-email-input-widget required email" id="wp-email-capture-email-widget" name="wp-email-capture-email" placeholder="Email Address"><br>
+
+                                <input type="hidden" value="1" name="wp_capture_action">
+
+                                <input type="submit" class="wp-email-capture-submit wp-email-capture-widget-worldwide" value="Submit" name="Submit">
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div><!-- eND OF .wp-email-capture-widget -->
+            </div>
+        </div>
+    </div><!-- End of container -->
+</div>
+
+<!-- blog-items -->
+<div class="blog-items">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <figure>
+                    <a title="Featured Dolor Ipsum Post" href="#">
+                        <img alt="post-featured" src="images/temp-images/featued-post-image1.jpg">
+                    </a>
+                    <figcaption>Featured Dolor Ipsum Post</figcaption>
+                </figure>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <figure>
+                    <a title="Sample Image Post" href="#">
+                        <img alt="3rd-post"  src="images/temp-images/featued-post-image1.jpg">
+                    </a>
+                    <figcaption>Sample Image Post</figcaption>
+                </figure>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <figure>
+                    <a title="Sample Post with Gallery Post Format" href="#">
+                        <img alt="4th-gallery-image"  src="images/temp-images/featued-post-image1.jpg">
+                    </a>
+                    <figcaption>Sample Post with Gallery Post Format</figcaption>
+                </figure>
+            </div>
+
+        </div>
+    </div>
+</div><!-- End of .blog-items -->
+
+ <!-- start of page content -->
+ <div class="container">
+ 	<div class="row">
+        <div role="main" class="main">
+            <article class="hentry clearfix">
+                <header>
+                    <h2 class="post-title"><a href="#">Featured Dolor Ipsum Post</a></h2>
+                    <div class="post-meta clearfix">
+                        <span>By</span> <a rel="author" title="Posts by John Doe" href="#">John Doe</a>
+                        <span class="date"> on October 01, 2013 </span>
+                        <span class="category">in <a title="View all posts in Culture" href="#">Culture</a></span>
+                    </div><!-- end of post meta -->
+                </header>
+                <figure>
+                    <a title="Featured Dolor Ipsum Post" href="#">
+                        <img alt="8th-post-featured" class="img-responsive wp-post-image" src="images/temp-images/8th-post-featured-754x472.jpg">
+                    </a>
+                </figure>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in…</p>    <a class="pp-btn" href="#">Read More</a>
+            </article>
+            <div class="row post-grid-2-col">
+                <div class="col-lg-6 col-md-6  col-sm-6  col-xs-6">
+            <article class="format-image hentry clearfix">
+                <header>
+                    <h3 class="post-title"><a href="#">Sample Image Post</a></h3>
+                    <div class="post-meta clearfix">
+                        <span>By</span> <a rel="author" title="Posts by John Doe" href="#">John Doe</a>
+                        <span class="date"> on October 01, 2013 </span>
+                        <span class="category">in <a title="View all posts in Economy" href="#">Economy</a></span>
+                    </div><!-- end of post meta -->
+                </header>
+                <figure>
+                    <a title="Sample Image Post" href="#">
+                        <img alt="3rd-post" class="img-responsive wp-post-image" src="images/temp-images/3rd-post-354x200.jpg">
+                    </a>
+                </figure>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna…<a class="read-more" href="#">Read More</a></p>
+            </article>
+        </div>
+                <div class="col-lg-6 col-md-6  col-sm-6  col-xs-6">
+                    <article class="format-standard hentry clearfix">
+                <header>
+                    <h3 class="post-title"><a href="#">Sample Post with Featured Image</a></h3>
+                    <div class="post-meta clearfix">
+                        <span>By</span> <a rel="author" title="Posts by John Doe" href="#">John Doe</a>
+                        <span class="date"> on October 01, 2013 </span>
+                        <span class="category">in <a title="View all posts in Rights" href="#">Rights</a></span>
+                    </div><!-- end of post meta -->
+                </header>
+                <figure>
+                    <a title="Sample Post with Featured Image" href="#">
+                        <img alt="5th-post-featured" class="img-responsive wp-post-image" src="images/temp-images/3rd-post-354x200.jpg">
+                    </a>
+                </figure>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna…<a class="read-more" href="#">Read More</a></p>
+            </article>
+                </div>
+                <div class="clearfix">
+
+        </div>
+                <div class="col-lg-6 col-md-6  col-sm-6  col-xs-6">
+            <article class="format-gallery hentry clearfix">
+                <header>
+                    <h3 class="post-title"><a href="#">Sample Post with Gallery Post Format</a></h3>
+                    <div class="post-meta clearfix">
+                        <span>By</span> <a rel="author" title="Posts by John Doe" href="#">John Doe</a>
+                        <span class="date"> on October 01, 2013 </span>
+                        <span class="category">in <a title="View all posts in Economy" href="#">Economy</a></span>
+                    </div><!-- end of post meta -->
+                </header>
+                <div class="listing-slider">
+
+                    <div class="flex-viewport">
+                        <ul class="slides">
+                            <li>
+                                <a class="swipebox" title="" href="images/temp-images/3rd-post-354x200.jpg">
+                                    <img alt="4th-gallery-image" src="images/temp-images/3rd-post-354x200.jpg" class="img-responsive" draggable="false">
+                                </a>
+                            </li>
+                            <li>
+                                <a class="swipebox" title="" href="images/temp-images/3rd-post-354x200.jpg">
+                                    <img alt="1st-gallery-image" src="images/temp-images/3rd-post-354x200.jpg" class="img-responsive" draggable="false"></a>
+                            </li>
+                            <li>
+                                <a class="swipebox" title="" href="images/temp-images/3rd-post-354x200.jpg">
+                                    <img alt="2nd-gallery-image" src="images/temp-images/3rd-post-354x200.jpg" class="img-responsive" draggable="false">
+                                </a>
+                            </li>
+                            <li>
+                                <a class="swipebox" title="" href="images/temp-images/3rd-post-354x200.jpg">
+                                    <img alt="3rd-gallery-image" src="images/temp-images/3rd-post-354x200.jpg" class="img-responsive" draggable="false">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna…<a class="read-more" href="#">Read More</a></p>
+            </article>
+        </div>
+                <div class="col-lg-6 col-md-6  col-sm-6  col-xs-6">
+            <article class="format-video hentry clearfix">
+                <header>
+                    <h3 class="post-title"><a href="#">Sample Video Post</a></h3>
+                    <div class="post-meta clearfix">
+                        <span>By</span> <a rel="author" title="Posts by John Doe" href="#">John Doe</a>
+                        <span class="date"> on October 01, 2013 </span>
+                        <span class="category">in <a title="View all posts in Rights" href="#">Rights</a></span>
+                    </div><!-- end of post meta -->
+                </header>
+                <div class="post-video">
+                    <div class="video-wrapper">
+                        <iframe allowfullscreen="" src="http://player.vimeo.com/video/23534361?title=0&amp;byline=0&amp;portrait=0"></iframe>
+                    </div>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna…<a class="read-more" href="#">Read More</a></p>
+            </article>
+        </div>
+                <div class="clearfix"></div>
+            </div>
+         </div><!-- end of page content -->
+     </div>
+ </div>
+
+
 {% endblock %}

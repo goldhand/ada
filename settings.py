@@ -224,6 +224,7 @@ INSTALLED_APPS = (
     "django.contrib.sites",
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
+    "users",
     "mezzanine.boot",
     "mezzanine.conf",
     "mezzanine.core",
@@ -233,8 +234,8 @@ INSTALLED_APPS = (
     "mezzanine.pages",
     "mezzanine.galleries",
     "mezzanine.twitter",
-    #"mezzanine.accounts",
-    #"mezzanine.mobile",
+    "mezzanine.accounts",
+    "mezzanine.mobile",
 )
 
 # List of processors used by RequestContext to populate the context.
@@ -297,6 +298,10 @@ DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 
 
 AUTOSLUG_SLUGIFY_FUNCTION = "slugify.slugify"
+#AUTH_USER_MODEL = "users.User"
+#LOGIN_REDIRECT_URL = "users:redirect"
+AUTH_PROFILE_MODULE = "users.UserProfile"
+ACCOUNTS_PROFILE_VIEWS_ENABLED = True
 ###################
 # DEPLOY SETTINGS #
 ###################

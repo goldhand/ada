@@ -10,15 +10,53 @@
 <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
 <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
 
+
+    <!-- Google Web Font -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
+
+
 {% ifinstalled mezzanine.blog %}
 <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
 <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
 {% endifinstalled %}
 
+{% comment %}
+{% if debug %}
+  <link rel="stylesheet/less" href="{% static 'bower_components/bootstrap/less/bootstrap.less' %}">
+  <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
+  <link rel="stylesheet/less" href="{% static 'bower_components/bootstrap/less/theme.less' %}">
+  <script type="text/javascript">
+    less = {
+      env: "development", // or "production"
+      async: false,       // load imports async
+      fileAsync: false,   // load imports async when in a page under
+      // a file protocol
+      poll: 1000,         // when in watch mode, time in ms between polls
+      functions: {},      // user functions, keyed by name
+      dumpLineNumbers: "comments", // or "mediaquery" or "all"
+      relativeUrls: false,// whether to adjust url's to be relative
+      // if false, url's are already relative to the
+      // entry less file
+      rootpath: ""// a path to add on to the start of every url
+      //resource
+    };
+  </script>
+  <script src="{% static 'bower_components/less/dist/less-1.7.0.min.js' %}"></script>
+{% else %}
+  <link href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
+  <link href="{% static 'bower_components/bootstrap/dist/css/bootstrap-theme.min.css' %}" rel="stylesheet">
+{% endif %}
+{% endcomment %}
+  <link href="{% static 'theme/css/bootstrap.css' %}" rel="stylesheet" media="all">
+  <link href="{% static 'theme/css/main.css' %}" rel="stylesheet" media="all">
+  <link href="{% static 'theme/css/skins/lighter-green.css' %}" rel="stylesheet" media="all">
+
 {% compress css %}
-<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
-<link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
-<link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">
+<!--link rel="stylesheet" href="{% static "css/bootstrap.css" %}"-->
+<!--link rel="stylesheet" href="{% static "css/mezzanine.css" %}"-->
+<!--link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}"-->
 {% if LANGUAGE_BIDI %}
 <link rel="stylesheet" href="{% static "css/rtl.css" %}">
 {% endif %}
@@ -47,24 +85,40 @@
 
 <body id="{% block body_id %}body{% endblock %}">
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-<div class="container">
-<div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">{% trans "Toggle Navigation" %}</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
-    {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
-    {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
-</div>
-<div class="navbar-collapse collapse">
-    {% search_form "all" %}
+
+<!-- Header Wrapper -->
+<div class="header-wrapper">
+
+    <!-- Start Header -->
+    <header role="banner" class="header container">
+
+        <div class="donate-now clearfix hidden">
+            <a target="_blank" title="Donate Now" href="#">Donate Now</a>
+        </div>
+
+        <!-- Start of Main Navigation -->
+        <nav role="navigation" class="nav main-menu clearfix" id="nav">
+{% search_form "all" %}
     {% page_menu "pages/menus/dropdown.html" %}
-</div>
-</div>
-</div>
+        </nav>
+
+        <!-- End of Main Navigation -->
+
+        <!-- Logo -->
+        <div class="logo clearfix">
+              {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
+              {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
+        </div>
+
+    </header><!-- End Header -->
+
+</div><!-- End of header-wrapper -->
+
+
+{% block page %}
+{% block main %}{% endblock %}
+{% endblock page %}
+{% comment %}
 
 <div class="container">
 
@@ -121,6 +175,8 @@
 
 </div>
 </div>
+{% endcomment %}
+
 
 <footer>
 <div class="container">
