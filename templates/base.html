@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
-{% load pages_tags mezzanine_tags i18n future staticfiles %}
+{% load pages_tags mezzanine_tags blog_tags i18n future staticfiles %}
 
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -114,9 +114,25 @@
 
 </div><!-- End of header-wrapper -->
 
+<!-- .header-bottom-wrapper -->
+<div class="header-bottom-wrapper">
+    <div class="container">
+      {% block header_bottom_wrapper %}
+        <div class="row">
+            <!-- Page Head -->
+            <div class="page-head col-lg-12">
+                <h2 class="page-title">{% block title %}{% endblock title %}</h2>
+            </div>
+            <!-- End Page Head -->
+        </div>
+      {% endblock header_bottom_wrapper %}
+    </div><!-- End of container -->
+</div>
 
 {% block page %}
-{% block main %}{% endblock %}
+{% block left_panel %}{% endblock left_panel %}
+{% block main %}{% endblock main %}
+{% block right_panel %}{% endblock right_panel %}
 {% endblock page %}
 {% comment %}
 
@@ -177,28 +193,106 @@
 </div>
 {% endcomment %}
 
+<!-- Footer -->
+<footer role="contentinfo" class="footer">
 
-<footer>
-<div class="container">
-{% page_menu "pages/menus/footer.html" %}
+    <div class="footer-top">
 
-<div class="row">
-<p class="site-info text-center">
-    {% trans "Powered by" %}
-    <a href="http://mezzanine.jupo.org">Mezzanine</a>{% ifinstalled cartridge.shop %},
-    <a href="http://cartridge.jupo.org">Cartridge</a>{% endifinstalled %}
-    {% trans "and" %}
-    <a href="http://www.djangoproject.com">Django</a>
-    <span class="separator">|</span>
-    {% trans "Theme by" %} <a target="_blank" href="http://getbootstrap.com">Bootstrap</a>
-    {% ifinstalled mezzanine.mobile %}
-    <span class="separator">|</span>
-    <a href="{% url "set_device" "mobile" %}?next={{ request.path }}">{% trans "View Mobile Site" %}</a>
-    {% endifinstalled %}
-</p>
-</div>
-</div>
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-3 col-md-3 col-sm-6">
+
+                    <!-- widget -->
+                    <section class="widget widget_text" id="text-2">
+                        <h3 class="title">About</h3>
+                        <div class="textwidget">
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
+                        </div>
+                    </section>
+                    <!-- End of .widget -->
+
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-6">
+
+                    <!-- widget -->
+                    <section class="widget widget_recent_entries" id="recent-posts-3">
+                      {% blog_recent_posts 5 as recent_posts %}
+                      {% if recent_posts %}
+                      <h3 class="title">{% trans "Recent Posts" %}</h3>
+                      <ul class="list-unstyled recent-posts">
+                      {% for recent_post in recent_posts %}
+                      <li><a href="{{ recent_post.get_absolute_url }}"
+                          >{{ recent_post.title }}</a></li>
+                      {% endfor %}
+                      </ul>
+                      {% endif %}
+                    </section>
+                    <!-- End of .widget -->
+
+                </div>
+
+
+                <div class="col-lg-3 col-md-3 col-sm-6">
+
+                    <!-- widget -->
+                    <section class="widget widget_text" id="text-4">
+                        {% ifinstalled mezzanine.twitter %}
+                        {% include "twitter/tweets.html" %}
+                        {% endifinstalled %}
+                    </section>
+                    <!-- End of .widget -->
+
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-6">
+
+                    <!-- widget -->
+                    <section class="widget widget_nav_menu" id="nav_menu-2">
+                        <h3 class="title">Quick Links</h3>
+                        <div class="menu-footer-menu-container">
+                          {% page_menu "pages/menus/footer.html" %}
+                        </div>
+                    </section>
+                    <!-- End of .widget -->
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div><!-- End of .footer-top -->
+
+    <!-- footer-bottom -->
+    <div class="footer-bottom">
+        <div class="container">
+
+            <p class="copyright">Copyright &copy; 2014. All Rights Reserved.</p>
+
+            <!-- Social Navigation -->
+            <ul class="social-nav clearfix">
+                <li class="facebook"><a href="#" target="_blank"></a></li>
+                <li class="twitter"><a href="#" target="_blank"></a></li>
+                <li class="linkedin"><a href="#" target="_blank"></a></li>
+                <li class="youtube"><a href="#" target="_blank"></a></li>
+                <li class="skype"><a href="skype:#?add" target="_blank"></a></li>
+                <li class="flickr"><a href="#" target="_blank"></a></li>
+                <li class="deviantart"><a href="#" target="_blank"></a></li>
+                <li class="google"><a href="#" target="_blank"></a></li>
+                <li class="stumble"><a href="#" target="_blank"></a></li>
+            </ul>
+
+        </div>
+    </div><!-- End of .footer-bottom -->
+
 </footer>
+<!-- End of Footer -->
+
+
+
 
 {% include "includes/footer_scripts.html" %}
 

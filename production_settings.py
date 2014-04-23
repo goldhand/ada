@@ -45,7 +45,7 @@ AWS_HEADERS = {
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 #STATIC_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
 STATIC_URL = 'https://s3.amazonaws.com/%s/' % "djangonu-ada"
-MEDIA_URL = 'https://s3.amazonaws.com/%s/media/' % "djangonu-ada"
+MEDIA_URL = 'https://s3.amazonaws.com/%s/' % "djangonu-ada"
 ########## END STORAGE CONFIGURATION
 ########## EMAIL
 DEFAULT_FROM_EMAIL = 'ada <ada-noreply@ada.herokuapp.com>'

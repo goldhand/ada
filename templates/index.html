@@ -7,12 +7,7 @@
 {% block breadcrumb_menu %}
 <li class="active">{% trans "Home" %}</li>
 {% endblock %}
-
-{% block main %}
-
-<!-- .header-bottom-wrapper -->
-<div class="header-bottom-wrapper">
-    <div class="container">
+{% block header_bottom_wrapper %}
 
         <!-- .quote -->
         <div class="quote">
@@ -87,8 +82,9 @@
                 </div><!-- eND OF .wp-email-capture-widget -->
             </div>
         </div>
-    </div><!-- End of container -->
-</div>
+{% endblock header_bottom_wrapper %}
+{% block main %}
+
 
 <!-- blog-items -->
 <div class="blog-items">

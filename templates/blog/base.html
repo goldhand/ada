@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block page %}
+<div class="page-container container">
+    <div class="row">
+    	<div class="col-md-8">
+		{% block main %}{% endblock main %}
+		</div>
+		<aside class="col-md-4 sidebar" role="complementary">
+		{% block right_panel %}{% endblock right_panel %}
+		</aside>
+	</div>
+</div>
+{% endblock page %}
