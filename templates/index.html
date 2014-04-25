@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n future mezzanine_tags blog_tags keyword_tags disqus_tags %}
 
 {% block meta_title %}{% trans "Home" %}{% endblock %}
 {% block title %}{% trans "Home" %}{% endblock %}
@@ -19,39 +19,43 @@
         <!-- End of .quote -->
 
         <div class="row">
+            {% blog_recent_posts 5 as recent_posts %}
+            {% if recent_posts %}
             <div class="col-lg-8 col-md-8 col-sm-12 home-flexslider variation-1">
                 <!-- Slider -->
-				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-				  <!-- Indicators -->
-				  <ol class="carousel-indicators">
-				    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-				    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-				    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-				  </ol>				
+				<div id="slider-1" class="carousel slide header-bottom-slider" data-ride="carousel">
+				  <!-- Indicators -->		
 
 				  <!-- Wrapper for slides -->
 				  <div class="carousel-inner">
-				    <div class="item active">
-				      <img src="" alt="">
-				      <div class="carousel-caption">
-				      </div>
-				    </div>
-				    <div class="item">
-				      <img src="" alt="">
-				      <div class="carousel-caption">
-				      </div>
-				    </div>
+
+                      {% for recent_post in recent_posts %}
+                        {% if settings.BLOG_USE_FEATURED_IMAGE and recent_post.featured_image %}
+
+				            <div class="item{% if forloop.first %} active{% endif %}">
+                                <a href="{{ recent_post.get_absolute_url }}">
+				                <img src="{{ MEDIA_URL }}{% thumbnail recent_post.featured_image 800 400 %}" alt="">
+				                <div class="carousel-caption">
+                                    <figcaption>
+                                        {{ recent_post.title }}
+                                    </figcaption>
+				                </div>
+                                </a>
+				            </div>
+                        {% endif %}
+                      {% endfor %}
 
 				  </div>				
 
 				  <!-- Controls -->
-				  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-				    <span class="glyphicon glyphicon-chevron-left"></span>
+				  <a class="left carousel-control" href="#slider-1" data-slide="prev">
+				    <!--span class="glyphicon glyphicon-chevron-left"></span-->
 				  </a>
-				  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-				    <span class="glyphicon glyphicon-chevron-right"></span>
+				  <a class="right carousel-control" href="#slider-1" data-slide="next">
+				    <!--span class="glyphicon glyphicon-chevron-right"></span-->
 				  </a>
                 </div><!-- End Slider -->
+                {% endif %}
             </div>
 
             <div class="col-lg-4 col-md-4 col-sm-12 header-widget">
@@ -92,34 +96,21 @@
     <div class="container">
 
         <div class="row">
-
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            {% blog_recent_posts limit=3 category="news" as recent_news_posts %}
+            {% if recent_news_posts %}
+              {% for recent_post in recent_news_posts %}
+                {% if settings.BLOG_USE_FEATURED_IMAGE and recent_post.featured_image %}
+            <div class="col-sm-4">
                 <figure>
-                    <a title="Featured Dolor Ipsum Post" href="#">
-                        <img alt="post-featured" src="images/temp-images/featued-post-image1.jpg">
+                    <a title="{{ recent_post.title }}" href="{{ recent_post.get_absolute_url }}">
+                        <img alt="{{ recent_post.title }}" src="{{ MEDIA_URL }}{% thumbnail recent_post.featured_image 354 144 %}">
                     </a>
-                    <figcaption>Featured Dolor Ipsum Post</figcaption>
+                    <figcaption>{{ recent_post.title }}</figcaption>
                 </figure>
             </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <figure>
-                    <a title="Sample Image Post" href="#">
-                        <img alt="3rd-post"  src="images/temp-images/featued-post-image1.jpg">
-                    </a>
-                    <figcaption>Sample Image Post</figcaption>
-                </figure>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <figure>
-                    <a title="Sample Post with Gallery Post Format" href="#">
-                        <img alt="4th-gallery-image"  src="images/temp-images/featued-post-image1.jpg">
-                    </a>
-                    <figcaption>Sample Post with Gallery Post Format</figcaption>
-                </figure>
-            </div>
-
+                {% endif %}
+              {% endfor %}
+            {% endif %}
         </div>
     </div>
 </div><!-- End of .blog-items -->
@@ -127,6 +118,7 @@
  <!-- start of page content -->
  <div class="container">
  	<div class="row">
+        <div class="col-md-8">
         <div role="main" class="main">
             <article class="hentry clearfix">
                 <header>
@@ -244,8 +236,12 @@
                 <div class="clearfix"></div>
             </div>
          </div><!-- end of page content -->
+         </div>
+         <div class="col-md-4 sidebar" role="complementary">
+            {% include "blog/includes/news_panel.html" %}
+         </div>
      </div>
  </div>
 
 
-{% endblock %}
+{% endblock main %}

@@ -1,0 +1,16 @@
+.header-bottom-slider .carousel-caption {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    background-color: #19825f;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 5px 18px 9px;
+    width: 269px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.widget .tabbed .block.current {
+    border-top-width: 0;
+}
