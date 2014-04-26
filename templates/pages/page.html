@@ -32,19 +32,15 @@
 </div>
 
 <div class="col-md-3 right sidebar" role="complementary">
+	{% search_form %}
+	<div class="text-center">
     {% nevercache %}
     {% include "includes/user_panel.html" %}
     {% endnevercache %}
+	</div>
     {% include "blog/includes/news_panel.html" %}
-    <div class="panel panel-default">
-    <div class="panel-body">
     {% block right_panel %}
-    {% ifinstalled mezzanine.twitter %}
-    {% include "twitter/tweets.html" %}
-    {% endifinstalled %}
     {% endblock %}
-    </div>
-    </div>
 </div>
 </div>
 {% endblock %}
