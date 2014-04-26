@@ -22,6 +22,11 @@
 {% endblock %}
 
 {% block main %}
+<article class="{% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}format-image{% else %}format-standard{% endif %} hentry clearfix">
+    <header>
+<h1 class="post-title">
+{% editable blog_post.title %}{{ blog_post.title }}{% endeditable %}
+</h1>
 
 {% block blog_post_detail_postedby %}
 {% editable blog_post.publish_date %}
@@ -49,10 +54,13 @@
     {% endif %}
 </p>
 {% endblock %}
+    </header>
 
 {% block blog_post_detail_featured_image %}
 {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
-<p><img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 600 0 %}"></p>
+<figure>
+<img class="img-responsive wp-post-image" src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 770 0 %}">
+</figure>
 {% endif %}
 {% endblock %}
 
@@ -129,5 +137,5 @@
 {% block blog_post_detail_comments %}
 {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
 {% endblock %}
-
+</article>
 {% endblock %}

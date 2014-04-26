@@ -14,3 +14,11 @@
 .widget .tabbed .block.current {
     border-top-width: 0;
 }
+@media(min-width: 980px){
+.main-menu ul li a {
+line-height: 23px;
+}
+.navbar-brand, .navbar-text {
+line-height: 35px;
+}
+}

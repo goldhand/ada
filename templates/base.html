@@ -127,12 +127,30 @@
       {% endblock header_bottom_wrapper %}
     </div><!-- End of container -->
 </div>
+<ul class="breadcrumb">
+{% spaceless %}
+{% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
+{% endspaceless %}
+</ul>
+{% nevercache %}
+{% if messages %}
+<div class="messages">
+{% for message in messages %}
+<div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    {{ message }}
+</div>
+{% endfor %}
+</div>
+{% endif %}
+{% endnevercache %}
 
 {% block page %}
 {% block left_panel %}{% endblock left_panel %}
 {% block main %}{% endblock main %}
 {% block right_panel %}{% endblock right_panel %}
 {% endblock page %}
+
 {% comment %}
 
 <div class="container">

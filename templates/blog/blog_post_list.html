@@ -110,7 +110,7 @@
 <figure>
 {% block blog_post_list_post_featured_image %}
 <a href="{{ blog_post.get_absolute_url }}">
-    <img class="img-responsive wp-post-image" src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 800 400 %}">
+    <img class="img-responsive wp-post-image" src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 770 0 %}">
 </a>
 {% endblock %}
 </figure>
@@ -163,5 +163,10 @@
 {% endblock main %}
 
 {% block right_panel %}
+<div class="text-center">
+{% nevercache %}
+{% include "includes/user_panel.html" %}
+{% endnevercache %}
+</div>
 {% include "blog/includes/news_panel.html" %}
 {% endblock %}
