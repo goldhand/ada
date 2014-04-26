@@ -1,0 +1,47 @@
+{% extends "accounts/base.html" %}
+{% load i18n mezzanine_tags %}
+
+{% block meta_title %}{{ title }}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+{% block body_id %}account{% endblock %}
+
+{% block breadcrumb_menu %}
+{{ block.super }}
+<li>{{ title }}</li>
+{% endblock %}
+
+{% block main %}
+
+{% errors_for form %}
+
+<form method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %} role="form" class="form-horizontal" id="user-update-form">
+	{% csrf_token %}
+
+    <legend>{{ title }}</legend>
+    <div class="col-md-12">
+    {% for field in form %}
+    <div class="form-group">
+        <label for="{{ field.id_for_label }}" class="control-label col-sm-3">{{ field.label }}</label>
+        	{{ field }}
+			{{ field.errors }}
+	</div>
+	{% endfor %}
+    <div class="form-actions">
+        {% block account_form_actions %}
+        <button class="btn btn-primary btn-lg pull-right" type="submit">{{ title }}</button>
+        {% endblock %}
+    </div>
+    </div>
+
+</form>
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+<script>
+$(document).ready(function() {
+	$('#user-update-form input').addClass('form-controls col-sm-9');
+	console.log('willll');
+});
+</script>
+{% endblock extra_js %}

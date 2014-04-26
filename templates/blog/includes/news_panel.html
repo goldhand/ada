@@ -230,7 +230,7 @@
 {% for author in authors %}
     <li>
         <a href="{% url "blog_post_list_author" author.username %}">
-            {{ author.get_full_name|default:author.username }} <span class="badge pull-right">{{ author.post_count }}</span>
+            {% if author.get_full_name %}{{ author.get_full_name }}{% else %}{{ author.username }}{% endif %} <span class="badge pull-right">{{ author.post_count }}</span>
         </a>
     </li>
 {% endfor %}

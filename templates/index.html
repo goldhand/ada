@@ -242,6 +242,12 @@
          </div><!-- end of page content -->
          </div>
          <div class="col-md-3 sidebar" role="complementary">
+            {% search_form %}
+            <div class="text-center">
+            {% nevercache %}
+            {% include "includes/user_panel.html" %}
+            {% endnevercache %}
+            </div>
             {% include "blog/includes/news_panel.html" %}
          </div>
     </div>
