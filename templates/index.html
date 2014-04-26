@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n future mezzanine_tags blog_tags keyword_tags disqus_tags %}
+{% load i18n future mezzanine_tags blog_tags keyword_tags disqus_tags pages_tags %}
 
 {% block meta_title %}{% trans "Home" %}{% endblock %}
 {% block title %}{% trans "Home" %}{% endblock %}
@@ -21,7 +21,7 @@
         <div class="row">
             {% blog_recent_posts 5 as recent_posts %}
             {% if recent_posts %}
-            <div class="col-lg-8 col-md-8 col-sm-12 home-flexslider variation-1">
+            <div class="col-md-8 home-flexslider variation-1">
                 <!-- Slider -->
 				<div id="slider-1" class="carousel slide header-bottom-slider" data-ride="carousel">
 				  <!-- Indicators -->		
@@ -58,7 +58,7 @@
                 {% endif %}
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-12 header-widget">
+            <div class="col-md-4 header-widget">
 
                 <!-- wp-email-capture-widget -->
                 <div class="wp-email-capture-widget">
@@ -116,9 +116,13 @@
 </div><!-- End of .blog-items -->
 
  <!-- start of page content -->
- <div class="container">
+ <div class="container page-container">
  	<div class="row">
-        <div class="col-md-8">
+
+            <div class="col-md-2 left">
+                <div class="panel panel-default tree">{% page_menu "pages/menus/tree.html" %}</div>
+            </div>
+        <div class="col-md-7 middle">
         <div role="main" class="main">
             <article class="hentry clearfix">
                 <header>
@@ -237,10 +241,10 @@
             </div>
          </div><!-- end of page content -->
          </div>
-         <div class="col-md-4 sidebar" role="complementary">
+         <div class="col-md-3 sidebar" role="complementary">
             {% include "blog/includes/news_panel.html" %}
          </div>
-     </div>
+    </div>
  </div>
 
 

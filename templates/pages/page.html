@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load mezzanine_tags keyword_tags %}
+{% load mezzanine_tags keyword_tags pages_tags %}
 
 {% block meta_title %}{{ page.meta_title }}{% endblock %}
 
@@ -20,8 +20,31 @@
 {% endblock %}
 
 {% block page %}
-<div class="container">
-	{% block main %}
-	{% endblock main %}
+<div class="page-container container">
+<div class="col-md-2 left">
+    {% block left_panel %}
+    <div class="panel panel-default tree">{% page_menu "pages/menus/tree.html" %}</div>
+    {% endblock %}
+</div>
+
+<div class="col-md-7 middle">
+    {% block main %}{% endblock %}
+</div>
+
+<div class="col-md-3 right sidebar" role="complementary">
+    {% nevercache %}
+    {% include "includes/user_panel.html" %}
+    {% endnevercache %}
+    {% include "blog/includes/news_panel.html" %}
+    <div class="panel panel-default">
+    <div class="panel-body">
+    {% block right_panel %}
+    {% ifinstalled mezzanine.twitter %}
+    {% include "twitter/tweets.html" %}
+    {% endifinstalled %}
+    {% endblock %}
+    </div>
+    </div>
+</div>
 </div>
 {% endblock %}
