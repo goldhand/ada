@@ -1,0 +1,16 @@
+{% extends "pages/page.html" %}
+
+{% load mezzanine_tags %}
+
+{% block main %}{{ block.super }}
+
+{% editable page.richtextpage.content %}
+{{ page.richtextpage.content|richtext_filters|safe }}
+{% endeditable %}
+
+{% for member in members %}
+<a href="{% url "blog_post_list_author" member.user.username %}" title="View Posts by {{ member.user.get_full_name }}">{{ member.user.get_full_name }}</a>
+<p>{{ member.bio }}</p>
+{% endfor %}
+
+{% endblock %}

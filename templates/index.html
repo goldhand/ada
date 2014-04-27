@@ -124,119 +124,156 @@
             </div>
         <div class="col-md-7 middle">
         <div role="main" class="main">
+            {% blog_recent_posts limit=1 category="issues" as recent_issues_posts %}
+            {% if recent_issues_posts %}
+              {% for recent_post in recent_issues_posts %}
+
             <article class="hentry clearfix">
                 <header>
-                    <h2 class="post-title"><a href="#">Featured Dolor Ipsum Post</a></h2>
+                    <h2 class="post-title">
+                        <a title="{{ recent_post.title }}" href="{{ recent_post.get_absolute_url }}">
+                            {{ recent_post.title }}
+                        </a>
+                    </h2>
                     <div class="post-meta clearfix">
-                        <span>By</span> <a rel="author" title="Posts by John Doe" href="#">John Doe</a>
-                        <span class="date"> on October 01, 2013 </span>
-                        <span class="category">in <a title="View all posts in Culture" href="#">Culture</a></span>
+                        <span>By</span> <a href="{% url "blog_post_list_author" recent_post.user.username %}" title="View Posts by {{ recent_post.user.get_full_name }}" rel="author">{{ recent_post.user.get_full_name }}</a>
+                        <span class="date"> on {{ recent_post.publish_date|date:"M d, Y" }} </span>
                     </div><!-- end of post meta -->
                 </header>
+                {% if settings.BLOG_USE_FEATURED_IMAGE and recent_post.featured_image %}
                 <figure>
-                    <a title="Featured Dolor Ipsum Post" href="#">
-                        <img alt="8th-post-featured" class="img-responsive wp-post-image" src="images/temp-images/8th-post-featured-754x472.jpg">
+                    <a title="{{ recent_post.title }}" href="{{ recent_post.get_absolute_url }}">
+                        <img alt="{{ recent_post.title }}" src="{{ MEDIA_URL }}{% thumbnail recent_post.featured_image 770 480 %}">
                     </a>
                 </figure>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in…</p>    <a class="pp-btn" href="#">Read More</a>
+                {% endif %}
+                <p>{{ recent_post.description_from_content|safe|truncatewords:50 }}</p>    <a class="pp-btn" href="{{ recent_post.get_absolute_url }}">Read More</a>
             </article>
+              {% endfor %}
+            {% endif %}
+
+
             <div class="row post-grid-2-col">
-                <div class="col-lg-6 col-md-6  col-sm-6  col-xs-6">
-            <article class="format-image hentry clearfix">
+                <div class="col-xs-6">
+            {% blog_recent_posts limit=1 category="initiatives" as recent_initiatives_posts %}
+            {% if recent_initiatives_posts %}
+              {% for recent_post in recent_initiatives_posts %}
+
+            <article class="hentry clearfix">
                 <header>
-                    <h3 class="post-title"><a href="#">Sample Image Post</a></h3>
+                    <h2 class="post-title">
+                        <a title="{{ recent_post.title }}" href="{{ recent_post.get_absolute_url }}">
+                            {{ recent_post.title }}
+                        </a>
+                    </h2>
                     <div class="post-meta clearfix">
-                        <span>By</span> <a rel="author" title="Posts by John Doe" href="#">John Doe</a>
-                        <span class="date"> on October 01, 2013 </span>
-                        <span class="category">in <a title="View all posts in Economy" href="#">Economy</a></span>
+                        <span>By</span> <a href="{% url "blog_post_list_author" recent_post.user.username %}" title="View Posts by {{ recent_post.user.get_full_name }}" rel="author">{{ recent_post.user.get_full_name }}</a>
+                        <span class="date"> on {{ recent_post.publish_date|date:"M d, Y" }} </span>
                     </div><!-- end of post meta -->
                 </header>
+                {% if settings.BLOG_USE_FEATURED_IMAGE and recent_post.featured_image %}
                 <figure>
-                    <a title="Sample Image Post" href="#">
-                        <img alt="3rd-post" class="img-responsive wp-post-image" src="images/temp-images/3rd-post-354x200.jpg">
+                    <a title="{{ recent_post.title }}" href="{{ recent_post.get_absolute_url }}">
+                        <img alt="{{ recent_post.title }}" src="{{ MEDIA_URL }}{% thumbnail recent_post.featured_image 770 480 %}">
                     </a>
                 </figure>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna…<a class="read-more" href="#">Read More</a></p>
+                {% endif %}
+                <p>{{ recent_post.description_from_content|safe|truncatewords:30 }} <a class="read-more" href="{{ recent_post.get_absolute_url }}">Read More</a></p>
             </article>
-        </div>
-                <div class="col-lg-6 col-md-6  col-sm-6  col-xs-6">
-                    <article class="format-standard hentry clearfix">
+              {% endfor %}
+            {% endif %}
+            </div>
+                <div class="col-xs-6">
+            {% blog_recent_posts limit=1 category="issues" as recent_issues_posts %}
+            {% if recent_issues_posts %}
+              {% for recent_post in recent_issues_posts %}
+
+            <article class="hentry format-standard clearfix">
                 <header>
-                    <h3 class="post-title"><a href="#">Sample Post with Featured Image</a></h3>
+                    <h2 class="post-title">
+                        <a title="{{ recent_post.title }}" href="{{ recent_post.get_absolute_url }}">
+                            {{ recent_post.title }}
+                        </a>
+                    </h2>
                     <div class="post-meta clearfix">
-                        <span>By</span> <a rel="author" title="Posts by John Doe" href="#">John Doe</a>
-                        <span class="date"> on October 01, 2013 </span>
-                        <span class="category">in <a title="View all posts in Rights" href="#">Rights</a></span>
+                        <span>By</span> <a href="{% url "blog_post_list_author" recent_post.user.username %}" title="View Posts by {{ recent_post.user.get_full_name }}" rel="author">{{ recent_post.user.get_full_name }}</a>
+                        <span class="date"> on {{ recent_post.publish_date|date:"M d, Y" }} </span>
                     </div><!-- end of post meta -->
                 </header>
+                {% if settings.BLOG_USE_FEATURED_IMAGE and recent_post.featured_image %}
                 <figure>
-                    <a title="Sample Post with Featured Image" href="#">
-                        <img alt="5th-post-featured" class="img-responsive wp-post-image" src="images/temp-images/3rd-post-354x200.jpg">
+                    <a title="{{ recent_post.title }}" href="{{ recent_post.get_absolute_url }}">
+                        <img alt="{{ recent_post.title }}" src="{{ MEDIA_URL }}{% thumbnail recent_post.featured_image 770 480 %}">
                     </a>
                 </figure>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna…<a class="read-more" href="#">Read More</a></p>
+                {% endif %}
+                <p>{{ recent_post.description_from_content|safe|truncatewords:30 }} <a class="read-more" href="{{ recent_post.get_absolute_url }}">Read More</a></p>
             </article>
-                </div>
-                <div class="clearfix">
+              {% endfor %}
+            {% endif %}
+            </div>
+                <div class="clearfix"></div>
 
-        </div>
-                <div class="col-lg-6 col-md-6  col-sm-6  col-xs-6">
-            <article class="format-gallery hentry clearfix">
+
+                <div class="col-xs-6">
+            {% blog_recent_posts limit=1 category="newsletter" as recent_newsletter_posts %}
+            {% if recent_newsletter_posts %}
+              {% for recent_post in recent_newsletter_posts %}
+
+            <article class="hentry clearfix">
                 <header>
-                    <h3 class="post-title"><a href="#">Sample Post with Gallery Post Format</a></h3>
+                    <h2 class="post-title">
+                        <a title="{{ recent_post.title }}" href="{{ recent_post.get_absolute_url }}">
+                            {{ recent_post.title }}
+                        </a>
+                    </h2>
                     <div class="post-meta clearfix">
-                        <span>By</span> <a rel="author" title="Posts by John Doe" href="#">John Doe</a>
-                        <span class="date"> on October 01, 2013 </span>
-                        <span class="category">in <a title="View all posts in Economy" href="#">Economy</a></span>
+                        <span>By</span> <a href="{% url "blog_post_list_author" recent_post.user.username %}" title="View Posts by {{ recent_post.user.get_full_name }}" rel="author">{{ recent_post.user.get_full_name }}</a>
+                        <span class="date"> on {{ recent_post.publish_date|date:"M d, Y" }} </span>
                     </div><!-- end of post meta -->
                 </header>
-                <div class="listing-slider">
-
-                    <div class="flex-viewport">
-                        <ul class="slides">
-                            <li>
-                                <a class="swipebox" title="" href="images/temp-images/3rd-post-354x200.jpg">
-                                    <img alt="4th-gallery-image" src="images/temp-images/3rd-post-354x200.jpg" class="img-responsive" draggable="false">
-                                </a>
-                            </li>
-                            <li>
-                                <a class="swipebox" title="" href="images/temp-images/3rd-post-354x200.jpg">
-                                    <img alt="1st-gallery-image" src="images/temp-images/3rd-post-354x200.jpg" class="img-responsive" draggable="false"></a>
-                            </li>
-                            <li>
-                                <a class="swipebox" title="" href="images/temp-images/3rd-post-354x200.jpg">
-                                    <img alt="2nd-gallery-image" src="images/temp-images/3rd-post-354x200.jpg" class="img-responsive" draggable="false">
-                                </a>
-                            </li>
-                            <li>
-                                <a class="swipebox" title="" href="images/temp-images/3rd-post-354x200.jpg">
-                                    <img alt="3rd-gallery-image" src="images/temp-images/3rd-post-354x200.jpg" class="img-responsive" draggable="false">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna…<a class="read-more" href="#">Read More</a></p>
+                {% if settings.BLOG_USE_FEATURED_IMAGE and recent_post.featured_image %}
+                <figure>
+                    <a title="{{ recent_post.title }}" href="{{ recent_post.get_absolute_url }}">
+                        <img alt="{{ recent_post.title }}" src="{{ MEDIA_URL }}{% thumbnail recent_post.featured_image 770 480 %}">
+                    </a>
+                </figure>
+                {% endif %}
+                <p>{{ recent_post.description_from_content|safe|truncatewords:30 }} <a class="read-more" href="{{ recent_post.get_absolute_url }}">Read More</a></p>
             </article>
-        </div>
-                <div class="col-lg-6 col-md-6  col-sm-6  col-xs-6">
-            <article class="format-video hentry clearfix">
+              {% endfor %}
+            {% endif %}
+            </div>
+                <div class="col-xs-6">
+            {% blog_recent_posts limit=1 category="community" as recent_community_posts %}
+            {% if recent_community_posts %}
+              {% for recent_post in recent_community_posts %}
+
+            <article class="hentry format-standard clearfix">
                 <header>
-                    <h3 class="post-title"><a href="#">Sample Video Post</a></h3>
+                    <h2 class="post-title">
+                        <a title="{{ recent_post.title }}" href="{{ recent_post.get_absolute_url }}">
+                            {{ recent_post.title }}
+                        </a>
+                    </h2>
                     <div class="post-meta clearfix">
-                        <span>By</span> <a rel="author" title="Posts by John Doe" href="#">John Doe</a>
-                        <span class="date"> on October 01, 2013 </span>
-                        <span class="category">in <a title="View all posts in Rights" href="#">Rights</a></span>
+                        <span>By</span> <a href="{% url "blog_post_list_author" recent_post.user.username %}" title="View Posts by {{ recent_post.user.get_full_name }}" rel="author">{{ recent_post.user.get_full_name }}</a>
+                        <span class="date"> on {{ recent_post.publish_date|date:"M d, Y" }} </span>
                     </div><!-- end of post meta -->
                 </header>
-                <div class="post-video">
-                    <div class="video-wrapper">
-                        <iframe allowfullscreen="" src="http://player.vimeo.com/video/23534361?title=0&amp;byline=0&amp;portrait=0"></iframe>
-                    </div>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna…<a class="read-more" href="#">Read More</a></p>
+                {% if settings.BLOG_USE_FEATURED_IMAGE and recent_post.featured_image %}
+                <figure>
+                    <a title="{{ recent_post.title }}" href="{{ recent_post.get_absolute_url }}">
+                        <img alt="{{ recent_post.title }}" src="{{ MEDIA_URL }}{% thumbnail recent_post.featured_image 770 480 %}">
+                    </a>
+                </figure>
+                {% endif %}
+                <p>{{ recent_post.description_from_content|safe|truncatewords:30 }} <a class="read-more" href="{{ recent_post.get_absolute_url }}">Read More</a></p>
             </article>
-        </div>
+              {% endfor %}
+            {% endif %}
+            </div>
+
                 <div class="clearfix"></div>
             </div>
          </div><!-- end of page content -->
