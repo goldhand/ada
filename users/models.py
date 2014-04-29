@@ -21,6 +21,7 @@ class UserProfile(models.Model):
 	type = models.CharField(max_length=255, choices=TYPE_CHOICES, default="Voting")
 	bio = models.TextField(blank=True)
 	img = models.ImageField(verbose_name=u"Profile Image", upload_to="users/img/", blank=True, null=True)
+	website = models.URLField(blank=True, max_length=255)
 
 	def __unicode__(self):
 		return self.user.username

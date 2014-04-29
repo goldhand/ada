@@ -8,11 +8,12 @@
 {{ page.richtextpage.content|richtext_filters|safe }}
 {% endeditable %}
 
-{% for member in members %}
+<h2 class="page-header">Voting Members</h2>
+{% for member in voting_members %}
 <div class="media">
-  <a class="pull-left" href="#">
-    {% if member.profile.img %}
-    <img class="media-object" src="{{ MEDIA_URL }}{% thumbnail member.profile.img 80 80 %}">
+  <a class="pull-left" href="{{ member.website }}" target="_blank">
+    {% if member.img %}
+    <img class="media-object" src="{{ MEDIA_URL }}{% thumbnail member.img 80 80 %}">
     {% else %}
     <img class="media-object" src="{% gravatar_url member.email 80 %}">
    {% endif %}
@@ -27,5 +28,47 @@
   </div>
 </div>
 {% endfor %}
+<h2 class="page-header">Caucus Members</h2>
+{% for member in caucus_members %}
+<div class="media">
+  <a class="pull-left" href="{{ member.website }}" target="_blank">
+    {% if member.img %}
+    <img class="media-object" src="{{ MEDIA_URL }}{% thumbnail member.img 80 80 %}">
+    {% else %}
+    <img class="media-object" src="{% gravatar_url member.email 80 %}">
+   {% endif %}
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading"><a href="{% url "blog_post_list_author" member.user.username %}" title="View Posts by {{ member.user.get_full_name }}">{{ member.user.get_full_name }}</a></h4>
+    <ul class="list-unstyled">
+		<li>{{ member.dispensary }}</li>
+		<li>{{ member.type }}</li>
+		<li>{{ member.bio }}</li>
+	</ul>
+  </div>
+</div>
+{% endfor %}
+<h2 class="page-header">Association Members</h2>
+{% for member in association_members %}
+<div class="media">
+  <a class="pull-left" href="{{ member.website }}" target="_blank">
+    {% if member.img %}
+    <img class="media-object" src="{{ MEDIA_URL }}{% thumbnail member.img 80 80 %}">
+    {% else %}
+    <img class="media-object" src="{% gravatar_url member.email 80 %}">
+   {% endif %}
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading"><a href="{% url "blog_post_list_author" member.user.username %}" title="View Posts by {{ member.user.get_full_name }}">{{ member.user.get_full_name }}</a></h4>
+    <ul class="list-unstyled">
+		<li>{{ member.dispensary }}</li>
+		<li>{{ member.type }}</li>
+		<li>{{ member.bio }}</li>
+	</ul>
+  </div>
+</div>
+{% endfor %}
+
+
 
 {% endblock %}

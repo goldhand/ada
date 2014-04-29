@@ -22,7 +22,7 @@ line-height: 23px;
 line-height: 35px;
 }
 }
-input[type="email"] {
+input[type="email"], input[type="url"] {
 height: 39px;
 padding-left: 10px;
 padding-right: 10px;
