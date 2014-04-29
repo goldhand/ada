@@ -28,7 +28,7 @@
 	{% endfor %}
     <div class="form-actions">
         {% block account_form_actions %}
-        <button class="btn btn-primary btn-lg pull-right" type="submit">{{ title }}</button>
+        <input class="btn btn-default pull-right" type="submit" value="{{ title }}">
         {% endblock %}
     </div>
     </div>
@@ -40,8 +40,8 @@
 {{ block.super }}
 <script>
 $(document).ready(function() {
-	$('#user-update-form input').addClass('form-controls col-sm-9');
-	console.log('willll');
+	$('#user-update-form .form-group input, #user-update-form .form-group textarea').addClass('form-controls col-sm-9');
+    $('#user-update-form select').addClass('form-controls col-sm-9 input-sm');
 });
 </script>
 {% endblock extra_js %}
