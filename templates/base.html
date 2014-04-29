@@ -93,7 +93,7 @@
     <header role="banner" class="header container">
 
         <div class="donate-now clearfix">
-            <a target="_blank" title="Donate Now" href="#">Donate Now</a>
+            <a target="_blank" title="Get Involved" href="/get-involved/">Get Involved</a>
         </div>
 
         <!-- Start of Main Navigation -->
@@ -219,7 +219,7 @@
 
             <div class="row">
 
-                <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="col-sm-4">
 
                     <!-- widget -->
                     <section class="widget widget_text" id="text-2">
@@ -232,8 +232,34 @@
 
                 </div>
 
+
+                <div class="col-sm-4">
+
+                    <!-- widget -->
+                    <section class="widget widget_nav_menu" id="nav_menu-2">
+                        <h3 class="title">Quick Links</h3>
+                        <div class="menu-footer-menu-container">
+                          {% page_menu "pages/menus/footer.html" %}
+                        </div>
+                    </section>
+                    <!-- End of .widget -->
+
+                </div>
+                <div class="col-sm-4">
+{% comment %}
+
+
                 <div class="col-lg-3 col-md-3 col-sm-6">
 
+                    <!-- widget -->
+                    <section class="widget widget_text" id="text-4">
+                        {% ifinstalled mezzanine.twitter %}
+                        {% include "twitter/tweets.html" %}
+                        {% endifinstalled %}
+                    </section>
+                    <!-- End of .widget -->
+
+                </div>
                     <!-- widget -->
                     <section class="widget widget_recent_entries" id="recent-posts-3">
                       {% blog_recent_posts 5 as recent_posts %}
@@ -248,33 +274,26 @@
                       {% endif %}
                     </section>
                     <!-- End of .widget -->
-
-                </div>
-
-
-                <div class="col-lg-3 col-md-3 col-sm-6">
-
+{% endcomment %}
                     <!-- widget -->
-                    <section class="widget widget_text" id="text-4">
-                        {% ifinstalled mezzanine.twitter %}
-                        {% include "twitter/tweets.html" %}
-                        {% endifinstalled %}
+                    <section class="" id="recent-posts-3">
+                      <h3 class="title">Contact Us</h3>
+                            <form class="form">
+                              
+                              <div class="form-group">
+                                <label for="id_name" class="control-label col-xs-4">Name</label>
+                                <input class="form-controls col-xs-8" type="text" name="name" id="id_name">
+                              </div>
+                              <div class="form-group">
+                                <label for="id_email" class="control-label col-xs-4">Email</label>
+                                <input class="form-controls col-xs-8" type="email" name="email" id="id_email">
+                              </div>
+                              <div class="form-actions">
+                                <input type="submit" class="btn btn-default btn-block" value="Submit" name="Submit">
+                              </div>
+                            </form>
                     </section>
                     <!-- End of .widget -->
-
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-6">
-
-                    <!-- widget -->
-                    <section class="widget widget_nav_menu" id="nav_menu-2">
-                        <h3 class="title">Quick Links</h3>
-                        <div class="menu-footer-menu-container">
-                          {% page_menu "pages/menus/footer.html" %}
-                        </div>
-                    </section>
-                    <!-- End of .widget -->
-
                 </div>
 
             </div>

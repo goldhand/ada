@@ -13,7 +13,11 @@
 {% block main %}
 <div class="row">
 <div class="profile-image col-md-3">
+    {% if profile_user.profile.img %}
+    <img class="img-thumbnail" src="{{ MEDIA_URL }}{% thumbnail profile_user.profile.img 128 128 %}">
+    {% else %}
     <img class="img-thumbnail" src="{% gravatar_url profile_user.email 128 %}">
+    {% endif %}
     {% if profile_user == request.user %}
     <br><a class="btn btn-primary" href="{% url "profile_update" %}">{% trans "Update profile" %}</a>
     {% endif %}

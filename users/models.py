@@ -15,11 +15,12 @@ class UserProfile(models.Model):
 		("Association", "Association")
 		)
 
-	user = models.OneToOneField("auth.User")
+	user = models.OneToOneField("auth.User", related_name="profile")
 	dispensary = models.CharField(max_length=255, blank=True)
 	phone = models.CharField(max_length=20, blank=True)
 	type = models.CharField(max_length=255, choices=TYPE_CHOICES, default="Voting")
 	bio = models.TextField(blank=True)
+	img = models.ImageField(verbose_name=u"Profile Image", upload_to="users/img/", blank=True, null=True)
 
 	def __unicode__(self):
 		return self.user.username
