@@ -26,6 +26,7 @@ from configurations import Configuration, values
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIRNAME = PROJECT_ROOT.split(os.sep)[-1]
+TIME_ZONE = 'America/Phoenix' # Time zone warning
 
 ########## 3RD PARTY FORKS
 PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"

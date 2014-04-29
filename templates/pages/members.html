@@ -9,8 +9,23 @@
 {% endeditable %}
 
 {% for member in members %}
-<a href="{% url "blog_post_list_author" member.user.username %}" title="View Posts by {{ member.user.get_full_name }}">{{ member.user.get_full_name }}</a>
-<p>{{ member.bio }}</p>
+<div class="media">
+  <a class="pull-left" href="#">
+    {% if member.profile.img %}
+    <img class="media-object" src="{{ MEDIA_URL }}{% thumbnail member.profile.img 80 80 %}">
+    {% else %}
+    <img class="media-object" src="{% gravatar_url member.email 80 %}">
+   {% endif %}
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading"><a href="{% url "blog_post_list_author" member.user.username %}" title="View Posts by {{ member.user.get_full_name }}">{{ member.user.get_full_name }}</a></h4>
+    <ul class="list-unstyled">
+		<li>{{ member.dispensary }}</li>
+		<li>{{ member.type }}</li>
+		<li>{{ member.bio }}</li>
+	</ul>
+  </div>
+</div>
 {% endfor %}
 
 {% endblock %}
