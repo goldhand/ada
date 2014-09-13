@@ -218,7 +218,7 @@ input[type="submit"].current {
 /*  Header
 /*-----------------------------------------------------------------------------------*/
 .header-bottom-wrapper {
-  background: url("lighter-green/world-map.png") #becfca no-repeat center top;
+  background: url("lighter-green/header-bg.png") #becfca no-repeat center top;
 }
 .header-wrapper {
   background-color: #ffffff;
@@ -363,7 +363,7 @@ input[type="submit"].current {
 /*-----------------------------------------------------------------------------------*/
 .footer {
   color: #59625f;
-  background: url("lighter-green/world-map-footer.png") #272d2b no-repeat center top;
+  background: url("lighter-green/footer-bg.png") #272d2b no-repeat center top;
 }
 .footer a {
   color: #59625f;
