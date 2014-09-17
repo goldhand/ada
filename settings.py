@@ -302,6 +302,9 @@ AUTOSLUG_SLUGIFY_FUNCTION = "slugify.slugify"
 #LOGIN_REDIRECT_URL = "users:redirect"
 AUTH_PROFILE_MODULE = "users.UserProfile"
 ACCOUNTS_PROFILE_VIEWS_ENABLED = True
+
+SECRET_KEY="adfu894358934u5oiuegh98459u345ue9gu4"
+
 ###################
 # DEPLOY SETTINGS #
 ###################
