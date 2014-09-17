@@ -156,7 +156,7 @@ class Common(Configuration):
 
     ########## DATABASE CONFIGURATION
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
-    DATABASES = values.DatabaseURLValue('postgres://localhost')
+    DATABASES = values.DatabaseURLValue('postgres://localhost/ada')
     ########## END DATABASE CONFIGURATION
 
     ########## CACHING
@@ -385,16 +385,6 @@ class Local(Common):
 
     ########## DATABASE CONFIGURATION
     # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'ada-goldhand',
-            'USER': 'goldhand',
-            'PASSWORD': '',
-            'HOST': '',
-            'PORT': '',
-            }
-    }
     ########## END DATABASE CONFIGURATION
 
     ########## Your local stuff: Below this line define 3rd party libary settings

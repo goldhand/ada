@@ -1187,9 +1187,6 @@ input[type="submit"]:focus {
 .footer .widget ul li a {
   color: #6b6e80;
 }
-.footer .widget ul li a:hover {
-  color: #dedfe2;
-}
 .footer .widget ul li ul li {
   margin-top: 19px;
 }

@@ -10,11 +10,12 @@
 <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
 <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
 
+<!-- Google Web Font -->
+<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
 
-    <!-- Google Web Font -->
-    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
-
+<!-- Font Awesome -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 {% ifinstalled mezzanine.blog %}
 <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
@@ -105,8 +106,7 @@
 
         <!-- Logo -->
         <div class="logo clearfix">
-              {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
-              {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
+          <a href="{% url 'home' %}"><img src="{% static "images/ada-navbar-logo.png" %}"></a>
         </div>
 
     </header><!-- End Header -->
@@ -183,7 +183,7 @@
 
 <div class="col-md-2 left">
     {% block left_panel %}
-    <div class="panel panel-default tree">{% page_menu "pages/menus/tree.html" %}</div>
+    <div class="panel panel-success tree">{% page_menu "pages/menus/tree.html" %}</div>
     {% endblock %}
 </div>
 
@@ -219,7 +219,7 @@
 
             <div class="row">
 
-                <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="col-sm-4">
 
                     <!-- widget -->
                     <section class="widget widget_text" id="text-2">
@@ -232,7 +232,7 @@
 
                 </div>
 
-                <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="col-sm-4">
 
                     <!-- widget -->
                     <section class="widget widget_recent_entries" id="recent-posts-3">
@@ -251,20 +251,7 @@
 
                 </div>
 
-
-                <div class="col-lg-3 col-md-3 col-sm-6">
-
-                    <!-- widget -->
-                    <section class="widget widget_text" id="text-4">
-                        {% ifinstalled mezzanine.twitter %}
-                        {% include "twitter/tweets.html" %}
-                        {% endifinstalled %}
-                    </section>
-                    <!-- End of .widget -->
-
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="col-sm-4">
 
                     <!-- widget -->
                     <section class="widget widget_nav_menu" id="nav_menu-2">
@@ -289,19 +276,17 @@
 
             <p class="copyright">Copyright &copy; 2014. All Rights Reserved.</p>
 
-            <!-- Social Navigation -->
-            <ul class="social-nav clearfix">
-                <li class="facebook"><a href="#" target="_blank"></a></li>
-                <li class="twitter"><a href="#" target="_blank"></a></li>
-                <li class="linkedin"><a href="#" target="_blank"></a></li>
-                <li class="youtube"><a href="#" target="_blank"></a></li>
-                <li class="skype"><a href="skype:#?add" target="_blank"></a></li>
-                <li class="flickr"><a href="#" target="_blank"></a></li>
-                <li class="deviantart"><a href="#" target="_blank"></a></li>
-                <li class="google"><a href="#" target="_blank"></a></li>
-                <li class="stumble"><a href="#" target="_blank"></a></li>
-            </ul>
-
+            <!-- Social Buttons -->
+            <div class="social-buttons">
+              <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+              <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+              <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+              <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+              <a href="#" target="_blank"><i class="fa fa-skype"></i></a>
+              <a href="#" target="_blank"><i class="fa fa-flickr"></i></a>
+              <a href="#" target="_blank"><i class="fa fa-google"></i></a>
+              <a href="#" target="_blank"><i class="fa fa-stumbleupon"></i></a>
+            </div>
         </div>
     </div><!-- End of .footer-bottom -->
 
